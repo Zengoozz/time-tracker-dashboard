@@ -15,7 +15,7 @@ export default function App() {
 
     return (
         <div className='flex justify-center place-items-center min-h-screen bg-veryDarkBlueCustom box-border'>
-            <div className='overflow-hidden grid grid-rows-layout grid-cols-layout gap-5 content-between text-white text-lg'>
+            <div className='overflow-hidden grid grid-rows-layout grid-cols-layout gap-4 content-between text-white text-lg'>
                 <Panel switchKeyword={switchKeyword}/>
                 <ItemsList keyword={keyword}/>
             </div>

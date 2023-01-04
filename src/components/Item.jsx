@@ -1,21 +1,51 @@
 import React from 'react'
-
 import { BsThreeDots } from 'react-icons/bs'
 
+import workImg from "../images/icon-work.svg"
+import playImg from "../images/icon-play.svg"
+import studyImg from "../images/icon-study.svg"
+import exerciseImg from "../images/icon-exercise.svg"
+import socialImg from "../images/icon-social.svg"
+import selfCareImg from "../images/icon-self-care.svg"
+
 export default function Item(props) {
-    const { name, icon, color, timeframes, keyword } = props;
-    const containerStyle = `col-span-1 row-span-1 relative h-4/5 rounded-t-xl rounded-b-2xl hover:cursor-pointer ${color}`
-    const iconStyle = `mr-3 bg-${icon} bg-no-repeat bg-contain bg-right-top w-full h-10`
-    console.log(iconStyle)
+    const { name, timeframes, keyword } = props;
+
+
+    const icons = name === 'work' ? [workImg, "bg-lightRedWorkCustom"] :
+        name === 'play' ? [playImg, "bg-softBluePlayCustom"] :
+            name === 'study' ? [studyImg, "bg-lightRedStudyCustom"] :
+                name === 'exercise' ? [exerciseImg, "bg-limeGreenExerCustom"] :
+                    name === 'social' ? [socialImg, "bg-violetSocialCustom"] :
+                        [selfCareImg, "bg-softOrangeSCCustom"]
+
+    const containerStyle = `rounded-t-xl rounded-b-2xl ${icons[1]} hover:cursor-pointer`
+    const headerStyle = `flex justify-end rounded-t-xl h-10 ${icons[1]}`
+
     const selectedTimeFrames = keyword === 'daily' ? timeframes.daily : keyword === 'weekly' ? timeframes.weekly : timeframes.monthly;
-    const selectedWord = keyword === 'daily' ? 'yesterday' : keyword === 'weekly' ? 'last week' : 'last month';
+    const selectedWord = keyword === 'daily' ?
+        'yesterday' : keyword === 'weekly' ?
+            'last week' : 'last month';
+
+    const hoverOn = () => {
+        const element = document.getElementById(name)
+        element.classList.remove("bg-darkBlueCustom")
+        element.classList.add("bg-desaturatedBlueCustom")
+    }
+
+    const hoverOut = () => {
+        const element = document.getElementById(name)
+        element.classList.remove("bg-desaturatedBlueCustom")
+        element.classList.add("bg-darkBlueCustom")
+    }
+
     return (
         <>
-            <div className={containerStyle}>
-                <span className='flex justify-end rounded-t-xl'>
-                    <span className={iconStyle}></span>
+            <div onMouseOver={hoverOn} onMouseOut={hoverOut} className={containerStyle}>
+                <span className={headerStyle}>
+                    <img className='mr-3 bg-no-repeat w-20 h-10 object-cover object-center' src={icons[0]} alt={name} />
                 </span>
-                <div className=' px-5 pt-5 pb-5 w-full absolute bg-darkBlueCustom top-8 rounded-xl hover:bg-blueCustom box-border'>
+                <div id={name} className='px-5 pt-5 pb-5 rounded-xl bg-darkBlueCustom'>
                     <span className='flex justify-between'>
                         <p className='text-base font-medium capitalize'>
                             {name}

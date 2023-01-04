@@ -18,14 +18,6 @@ module.exports = {
         "desaturatedBlueCustom": "hsl(235, 45%, 61%)",
         "paleBlueCustom": "hsl(236, 100%, 87%)",
       },
-      backgroundImage:{
-        'workImg':"url('./images/icon-work.svg')",
-        'playImg':"url('./images/icon-play.svg')",
-        'studyImg':"url('./images/icon-study.svg')",
-        'exerciseImg':"url('./images/icon-exercise.svg')",
-        'socialImg':"url('./images/icon-social.svg')",
-        'selfCareImg':"url('./images/icon-self-care.svg')",
-      },
       gridTemplateColumns: {
         'layout': 'repeat(4 ,minmax(0, 200px)) ',
       },

@@ -20,7 +20,7 @@ export default function Panel({switchKeyword}) {
                     Jeremy Robson
                 </p>
             </div>
-            <div className='px-5 py-5 flex-col text-sm text-paleBlueCustom'>
+            <div className='px-5 pt-5 flex-col text-sm text-paleBlueCustom'>
                 <ul>
                     {
                         timeline.map(item => {
@@ -29,7 +29,7 @@ export default function Panel({switchKeyword}) {
                                     onClick={passState}
                                     id={item}
                                     key={item}
-                                    className='py-1 capitalize hover:text-white hover:cursor-pointer active:text-white'>
+                                    className='pt-2 pb-1 capitalize hover:text-white hover:cursor-pointer active:text-white'>
                                     {item}
                                 </li>
                             )
