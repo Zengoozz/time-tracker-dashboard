@@ -19,10 +19,10 @@ export default function Item(props) {
                     name === 'social' ? [socialImg, "bg-violetSocialCustom"] :
                         [selfCareImg, "bg-softOrangeSCCustom"]
 
-    const containerStyle = `rounded-t-xl rounded-b-2xl ${icons[1]} hover:cursor-pointer`
-    const headerStyle = `flex justify-end rounded-t-xl h-10 ${icons[1]}`
+    const selectedTimeFrames = keyword === 'daily' ?
+        timeframes.daily : keyword === 'weekly' ?
+            timeframes.weekly : timeframes.monthly;
 
-    const selectedTimeFrames = keyword === 'daily' ? timeframes.daily : keyword === 'weekly' ? timeframes.weekly : timeframes.monthly;
     const selectedWord = keyword === 'daily' ?
         'yesterday' : keyword === 'weekly' ?
             'last week' : 'last month';
@@ -41,8 +41,11 @@ export default function Item(props) {
 
     return (
         <>
-            <div onMouseOver={hoverOn} onMouseOut={hoverOut} className={containerStyle}>
-                <span className={headerStyle}>
+            <div
+                onMouseOver={hoverOn}
+                onMouseOut={hoverOut}
+                className={`rounded-t-xl rounded-b-2xl ${icons[1]} hover:cursor-pointer`}>
+                <span className={`flex justify-end rounded-t-xl h-10 ${icons[1]}`}>
                     <img className='mr-3 bg-no-repeat w-20 h-10 object-cover object-center' src={icons[0]} alt={name} />
                 </span>
                 <div id={name} className='px-5 pt-5 pb-5 rounded-xl bg-darkBlueCustom'>
